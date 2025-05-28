@@ -1,76 +1,61 @@
-```markdown
-# 🛠️ Ferramentas e Utilitários de Suporte em TI
+# IT Support Tools & Utilities
 
-![GitHub Repo stars](https://img.shields.io/github/stars/AndreGoncallez/IT-Support)
-![GitHub forks](https://img.shields.io/github/forks/AndreGoncallez/IT-Support)
-![GitHub issues](https://img.shields.io/github/issues/AndreGoncallez/IT-Support)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/AndreGoncallez/IT-Support)
-![GitHub license](https://img.shields.io/github/license/AndreGoncallez/IT-Support)
-![GitHub last commit](https://img.shields.io/github/last-commit/AndreGoncallez/IT-Support)
+Bem-vindo ao repositório **IT Support Tools & Utilities**!
 
----
+Este projeto foi criado especialmente para profissionais de Suporte de TI, Service Desk, Help Desk, Técnicos de Informática e Administradores de Sistemas que atuam em ambientes corporativos, educacionais ou domésticos. Aqui você encontrará uma coleção de ferramentas práticas, scripts, guias e exemplos de procedimentos voltados para o dia a dia do suporte em informática e infraestrutura.
 
-## 📚 Índice
+## 🚀 Propósito
 
-- [🎯 Propósito](#-propósito)
-- [📦 O que você encontra aqui](#-o-que-você-encontra-aqui)
-- [🚀 Exemplos de Utilização](#-exemplos-de-utilização)
-- [👥 Para quem é este repositório?](#-para-quem-é-este-repositório)
-- [🤝 Como contribuir](#-como-contribuir)
-- [📄 Licença](#-licença)
+O principal objetivo deste repositório é centralizar recursos úteis que facilitem e agilizem o trabalho de profissionais de TI, abrangendo desde atividades básicas de manutenção até automações e troubleshooting.
 
----
+## ⚙️ O que você encontra aqui
 
-## 🎯 Propósito
+- **Scripts de Automação e Diagnóstico**
+  - Scripts em PowerShell, Bash, Python e Batch para automação de tarefas, coleta de informações, limpeza de sistema, mapeamento de rede, inventário, etc.
+- **Modelos de Checklist**
+  - Checklists para abertura e fechamento de chamados, atendimento remoto e presencial, formatação e preparação de equipamentos, checklist de entrega de equipamentos e onboarding de usuários.
+- **Guias de Troubleshooting**
+  - Passo a passo para resolução de problemas comuns: lentidão, falha de impressão, problemas de acesso à internet, mapeamento de unidades de rede, falhas em e-mails, antivírus, etc.
+- **Ferramentas de Suporte**
+  - Utilitários para teste de conectividade, análise de rede, recuperação de senhas, criação de pendrive bootável, verificação de hardware, entre outros.
+- **Modelos de Documentação**
+  - Exemplos de documentação para procedimentos internos, políticas de backup, orientações para usuários, templates de relatórios e inventário.
+- **Dicas & Boas Práticas**
+  - Anotações sobre segurança da informação, procedimentos de backup, orientações para atendimento ao usuário, links úteis e materiais de consulta rápida.
 
-Centralizar recursos para otimizar o trabalho de profissionais de suporte, desde resolução de problemas até automações.
+## 🧰 Exemplos de Utilização
 
----
+- **Script para inventário automático de computadores na rede**
+- **Checklist para formatação e reinstalação do Windows**
+- **Guia rápido para reset de senha no Active Directory**
+- **Script para mapear unidades de rede via login**
+- **Ferramenta para teste de velocidade de internet**
+- **Modelos de e-mails de atendimento ao usuário**
+- **Checklist para onboarding de colaboradores**
 
-## 📦 O que você encontra aqui
+## 🔥 Para quem é este repositório?
 
-- 🩺 **Ferramentas de Diagnóstico:** Utilitários para verificar conectividade, desempenho e status de sistemas.
-- 🤖 **Scripts de Automação:** Ferramentas em Python, PowerShell e Bash para automação de tarefas comuns.
-- 📝 **Modelos de Documentação:** Exemplos de relatórios de incidentes e guias de procedimentos.
-- ✅ **Checklists de Suporte:** Guias para diagnóstico e resolução de problemas frequentes.
-- 💡 **Dicas e Boas Práticas:** Materiais de referência para otimização de processos de suporte.
+- Técnicos de Suporte de TI (Nível 1, 2 e 3)
+- Analistas e Administradores de Sistemas
+- Profissionais de Service Desk e Help Desk
+- Equipes de Suporte em empresas, escolas e órgãos públicos
+- Estudantes de cursos técnicos e certificações (CompTIA, Microsoft, etc)
+- Qualquer pessoa que queira otimizar, automatizar ou facilitar o suporte em informática
 
----
+## 💡 Como contribuir
 
-## 🚀 Exemplos de Utilização
+Sua experiência é muito bem-vinda!  
+Se você tem scripts, modelos, dicas, ferramentas ou sugestões que possam beneficiar a comunidade de TI, fique à vontade para enviar um pull request ou abrir uma issue.
 
-- Monitoramento de serviços em servidores.
-- Checklist para solução de problemas de conectividade.
-- Modelos de relatórios de incidentes.
-- Ferramentas para análise de logs de sistemas.
-- Playbooks para automação de tarefas administrativas.
+## 📝 Licença
 
----
-
-## 👥 Para quem é este repositório?
-
-- Analistas de suporte técnico
-- Profissionais de help desk
-- Estudantes de TI e certificações (CompTIA, ITIL, etc.)
-- Times de suporte em empresas
-- Qualquer pessoa que deseje melhorar a eficiência no suporte técnico
+Este repositório é aberto para colaboração. Consulte o arquivo LICENSE para mais detalhes.
 
 ---
 
-## 🤝 Como contribuir
-
-Contribuições são bem-vindas!  
-Se você tem scripts, modelos ou dicas que possam beneficiar a comunidade, sinta-se à vontade para enviar um pull request ou abrir uma issue.
+Mantenha este repositório nos seus favoritos e volte sempre que precisar de uma solução rápida para desafios do dia a dia de TI!
 
 ---
 
-## 📄 Licença
-
-Consulte o arquivo [LICENSE](LICENSE) para detalhes.
-
----
-
-**Mantenedor:** André Gonçallez
-
-
-
+**Mantenedor:**  
+Andre Goncallez
