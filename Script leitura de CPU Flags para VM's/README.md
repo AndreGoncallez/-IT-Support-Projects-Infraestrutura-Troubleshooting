@@ -15,8 +15,8 @@ Este documento fornece um utilitário pronto para verificar se o seu sistema est
 
 ## 📥 Download do script
 
-👉 Baixe o pacote completo (.zip) com o script PowerShell e instruções:
-[diagnostico_virtualizacao_vmware.zip](diagnostico_virtualizacao_vmware.zip)
+👉 Baixe o pacote completo (.zip) com o script PowerShell e instruções .txt:
+
 
 ---
 
