@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend">
+
+  <!-- Passo windowsPE: configurações iniciais, como particionamento e instalação -->
   <settings pass="windowsPE">
-    <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <!-- Configurações de disco -->
+    <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS"
+      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+      <!-- Configuração do disco: particionamento e formatação -->
       <DiskConfiguration>
         <Disk wcm:action="add">
-          <DiskID>0</DiskID>
-          <WillWipeDisk>true</WillWipeDisk>
+          <DiskID>0</DiskID> <!-- Disco 0 será usado para instalação -->
+          <WillWipeDisk>true</WillWipeDisk> <!-- Apaga todo o conteúdo do disco -->
           <CreatePartitions>
+            <!-- Partição reservada para sistema, 100MB -->
             <CreatePartition wcm:action="add">
               <Order>1</Order>
               <Type>Primary</Type>
-              <Size>100</Size> <!-- Tamanho da partição reservada para sistema -->
+              <Size>100</Size>
             </CreatePartition>
+
+            <!-- Partição principal usando o restante do disco -->
             <CreatePartition wcm:action="add">
               <Order>2</Order>
               <Type>Primary</Type>
-              <Extend>true</Extend> <!-- Usar o restante do disco -->
+              <Extend>true</Extend>
             </CreatePartition>
           </CreatePartitions>
+
           <ModifyPartitions>
+            <!-- Formata partição reservada como NTFS e a ativa -->
             <ModifyPartition wcm:action="add">
               <Order>1</Order>
               <PartitionID>1</PartitionID>
@@ -27,6 +37,8 @@
               <Label>System Reserved</Label>
               <Active>true</Active>
             </ModifyPartition>
+
+            <!-- Formata partição principal como NTFS e atribui letra C -->
             <ModifyPartition wcm:action="add">
               <Order>2</Order>
               <PartitionID>2</PartitionID>
@@ -36,93 +48,133 @@
             </ModifyPartition>
           </ModifyPartitions>
         </Disk>
-        <WillShowUI>OnError</WillShowUI>
+        <WillShowUI>OnError</WillShowUI> <!-- Mostra interface apenas se houver erro -->
       </DiskConfiguration>
-      <!-- Local de instalação -->
+
+      <!-- Configura a imagem do Windows que será instalada -->
       <ImageInstall>
         <OSImage>
           <InstallFrom>
             <MetaData wcm:action="add">
               <Key>/IMAGE/INDEX</Key>
-              <Value>1</Value> <!-- Índice da imagem a ser instalada -->
+              <Value>1</Value> <!-- Índice da imagem no install.wim (1 = Windows 11 Pro) -->
             </MetaData>
           </InstallFrom>
+
+          <!-- Instala na partição 2 do disco 0 -->
           <InstallTo>
             <DiskID>0</DiskID>
             <PartitionID>2</PartitionID>
           </InstallTo>
+
           <WillShowUI>OnError</WillShowUI>
         </OSImage>
       </ImageInstall>
+
+      <!-- Dados do usuário e aceitação automática da licença -->
       <UserData>
-        <AcceptEula>true</AcceptEula> <!-- Aceitar termos automaticamente -->
-        <FullName>Usuario</FullName>
-        <Organization>Empresa</Organization>
+        <AcceptEula>true</AcceptEula> <!-- Aceita os termos automaticamente -->
+        <FullName>Joao Silva</FullName> <!-- Nome completo do usuário -->
+        <Organization>MinhaEmpresa</Organization> <!-- Nome da empresa -->
         <ProductKey>
-          <Key>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</Key> <!-- Pode ser removido para ativação pós-instalação -->
+          <Key>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</Key> <!-- Chave do produto (ou remova para ativar depois) -->
           <WillShowUI>Never</WillShowUI>
         </ProductKey>
       </UserData>
     </component>
   </settings>
 
+  <!-- Passo specialize: configurações após instalação, personalização -->
   <settings pass="specialize">
-    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <ComputerName>PC-%RAND%</ComputerName> <!-- Nome aleatório -->
-      <TimeZone>America/Sao_Paulo</TimeZone> <!-- Fuso horário -->
-      <RegisteredOrganization>Empresa</RegisteredOrganization>
-      <RegisteredOwner>Usuario</RegisteredOwner>
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35"
+      language="neutral" versionScope="nonSxS"
+      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+      <!-- Nome do computador (PC): personalize conforme necessidade -->
+      <ComputerName>PC-Escritorio1</ComputerName>
+
+      <!-- Define o fuso horário -->
+      <TimeZone>America/Sao_Paulo</TimeZone>
+
+      <!-- Informação da organização registrada -->
+      <RegisteredOrganization>MinhaEmpresa</RegisteredOrganization>
+
+      <!-- Proprietário registrado -->
+      <RegisteredOwner>Joao Silva</RegisteredOwner>
+
+      <!-- Configuração para login automático -->
       <AutoLogon>
+        <!-- Senha do usuário em texto claro (modifique aqui) -->
         <Password>
-          <Value>Senha123!</Value>
+          <Value>SenhaSegura2025</Value>
           <PlainText>true</PlainText>
         </Password>
-        <Username>Usuario</Username>
+
+        <!-- Nome do usuário para auto login (modifique aqui) -->
+        <Username>JoaoSilva</Username>
+
         <Enabled>true</Enabled>
         <LogonCount>1</LogonCount>
       </AutoLogon>
+
+      <!-- Comandos para rodar no primeiro login -->
       <FirstLogonCommands>
         <SynchronousCommand wcm:action="add">
           <Order>1</Order>
+          <!-- Comando para pular a OOBE (primeira configuração do Windows) -->
           <CommandLine>cmd /c reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE" /v SkipMachineOOBE /t REG_DWORD /d 1 /f</CommandLine>
           <Description>Skip OOBE</Description>
         </SynchronousCommand>
       </FirstLogonCommands>
+
+      <!-- Senha do administrador local -->
       <UserAccounts>
         <AdministratorPassword>
-          <Value>Senha123!</Value>
+          <Value>SenhaAdmin123!</Value> <!-- Modifique a senha do administrador aqui -->
           <PlainText>true</PlainText>
         </AdministratorPassword>
       </UserAccounts>
+
+      <!-- Configurações do OOBE -->
       <OOBE>
-        <HideEULAPage>true</HideEULAPage>
-        <NetworkLocation>Work</NetworkLocation>
+        <HideEULAPage>true</HideEULAPage> <!-- Oculta tela de termos -->
+        <NetworkLocation>Work</NetworkLocation> <!-- Define localização da rede -->
         <ProtectYourPC>3</ProtectYourPC> <!-- Desabilita envio de dados -->
-        <SkipMachineOOBE>true</SkipMachineOOBE>
-        <SkipUserOOBE>true</SkipUserOOBE>
-        <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
-        <HideLocalAccountScreen>true</HideLocalAccountScreen>
-        <SkipUserOOBEAutoLogon>true</SkipUserOOBEAutoLogon>
+        <SkipMachineOOBE>true</SkipMachineOOBE> <!-- Pula configuração inicial da máquina -->
+        <SkipUserOOBE>true</SkipUserOOBE> <!-- Pula configuração inicial do usuário -->
+        <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE> <!-- Oculta configuração de Wi-Fi -->
+        <HideLocalAccountScreen>true</HideLocalAccountScreen> <!-- Oculta tela de criação de conta local -->
+        <SkipUserOOBEAutoLogon>true</SkipUserOOBEAutoLogon> <!-- Pula login OOBE automático -->
       </OOBE>
+
     </component>
   </settings>
 
+  <!-- Passo oobeSystem: configurações de idioma e outras opções finais -->
   <settings pass="oobeSystem">
-    <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <InputLocale>pt-BR</InputLocale>
-      <SystemLocale>pt-BR</SystemLocale>
-      <UILanguage>pt-BR</UILanguage>
-      <UserLocale>pt-BR</UserLocale>
+    <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35"
+      language="neutral" versionScope="nonSxS"
+      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <InputLocale>pt-BR</InputLocale> <!-- Layout do teclado -->
+      <SystemLocale>pt-BR</SystemLocale> <!-- Local do sistema -->
+      <UILanguage>pt-BR</UILanguage> <!-- Idioma da interface -->
+      <UserLocale>pt-BR</UserLocale> <!-- Localidade do usuário -->
     </component>
-    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35"
+      language="neutral" versionScope="nonSxS"
+      xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <OOBE>
-        <HideEULAPage>true</HideEULAPage>
-        <HideLocalAccountScreen>false</HideLocalAccountScreen> <!-- Permitir criação conta local -->
-        <ProtectYourPC>3</ProtectYourPC>
-        <SkipUserOOBE>true</SkipUserOOBE>
+        <HideEULAPage>true</HideEULAPage> <!-- Oculta tela de licença -->
+        <HideLocalAccountScreen>false</HideLocalAccountScreen> <!-- Permite criar conta local -->
+        <ProtectYourPC>3</ProtectYourPC> <!-- Desabilita telemetria -->
+        <SkipUserOOBE>true</SkipUserOOBE> <!-- Pula configuração do usuário -->
       </OOBE>
     </component>
   </settings>
 
+  <!-- Fonte da imagem do Windows -->
   <cpi:offlineImage cpi:source="wim:E:/sources/install.wim#Windows 11 Pro" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
